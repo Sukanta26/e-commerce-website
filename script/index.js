@@ -80,8 +80,8 @@ async function loadTrending() {
 
   top.forEach(product => {
     trendingContainer.innerHTML += `
-      <div class="rounded shadow">
-          <div class="bg-gray-100">
+      <div class="rounded shadow-lg">
+          <div class="bg-gray-100 rounded-xl">
           <img src="${product.image}" class="py-4 h-40 mx-auto object-contain">
           </div>
           <div class="p-5">
