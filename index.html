@@ -4,7 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SwiftCart</title>
-    <link rel="shortcut icon" href="./Assets/logo.png" type="image/x-icon" />
+    <link
+      rel="shortcut icon"
+      href="./assets/shopping-cart.png"
+      type="image/x-icon" />
+
     <!-- CSS Style -->
     <link rel="stylesheet" href="./style/style.css" />
 
@@ -26,9 +30,20 @@
   <body class="montserrat">
     <!-- NAVBAR -->
     <nav class="bg-gray-100 shadow-md">
-      <div
-        class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-        <h1 class="text-2xl font-bold text-indigo-600">SwiftCart</h1>
+      <div class="mx-auto lg:px-6 px-2 py-4 flex justify-between items-center">
+        <div class="flex gap-2">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            class="lg: size-7 text-indigo-600">
+            <path
+              fill-rule="evenodd"
+              d="M7.5 6v.75H5.513c-.96 0-1.764.724-1.865 1.679l-1.263 12A1.875 1.875 0 0 0 4.25 22.5h15.5a1.875 1.875 0 0 0 1.865-2.071l-1.263-12a1.875 1.875 0 0 0-1.865-1.679H16.5V6a4.5 4.5 0 1 0-9 0ZM12 3a3 3 0 0 0-3 3v.75h6V6a3 3 0 0 0-3-3Zm-3 8.25a3 3 0 1 0 6 0v-.75a.75.75 0 0 1 1.5 0v.75a4.5 4.5 0 1 1-9 0v-.75a.75.75 0 0 1 1.5 0v.75Z"
+              clip-rule="evenodd" />
+          </svg>
+          <h1 class="text-2xl font-bold text-indigo-600">SwiftCart</h1>
+        </div>
 
         <ul class="hidden md:flex space-x-8 font-medium">
           <li><a href="./index.html" class="hover:text-indigo-600">Home</a></li>
@@ -39,13 +54,58 @@
           <li><a href="#" class="hover:text-indigo-600">Contact</a></li>
         </ul>
 
-        <div class="relative">
-          🛒
-          <span
-            id="cart-count"
-            class="absolute -top-2 -right-3 bg-indigo-600 text-white text-xs px-2 rounded-full"
-            >0</span
-          >
+        <div class="flex items-center">
+          <div class="dropdown">
+            <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-5 w-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4 6h16M4 12h8m-8 6h16" />
+              </svg>
+            </div>
+            <ul
+              tabindex="-1"
+              class="menu menu-sm dropdown-content bg-base-100 rounded-box mt-3 shadow">
+              <li>
+                <a href="./index.html" class="hover:text-indigo-600">Home</a>
+              </li>
+              <li>
+                <a href="./product.html" class="hover:text-indigo-600"
+                  >Products</a
+                >
+              </li>
+              <li><a href="#" class="hover:text-indigo-600">About</a></li>
+              <li><a href="#" class="hover:text-indigo-600">Contact</a></li>
+            </ul>
+          </div>
+
+          <div class="relative mr-3">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="lg:size-8 size-6">
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
+            </svg>
+
+            <span
+              id="cart-count"
+              class="absolute -top-2 -right-3 bg-indigo-600 text-white text-xs px-2 rounded-full"
+              >0</span
+            >
+          </div>
         </div>
       </div>
     </nav>
@@ -61,8 +121,9 @@
         <h2 class="text-4xl md:text-5xl font-bold mb-4">
           Best Collection For You
         </h2>
-        <p class="mb-6 max-w-xl mx-auto">
-          Discover the latest trends in fashion, electronics, and more.
+        <p class="mb-6 max-w-xl mx-auto text-slate-300">
+          Discover the latest trends in fashion, electronics, and more. Shop
+          with confidence and style at SwiftCartS
         </p>
         <a href="./product.html" class="bg-indigo-600 px-6 py-3 rounded-lg">
           Shop Now
@@ -176,7 +237,7 @@
     </section>
 
     <!-- TRENDING -->
-    <section class="py-16 bg-white">
+    <section class="py-16 bg-white hidden">
       <div class="max-w-7xl mx-auto px-6">
         <h3 class="text-3xl font-bold mb-8">Trending Now</h3>
         <div id="trending-products" class="grid md:grid-cols-3 gap-6"></div>
