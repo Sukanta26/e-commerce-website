@@ -80,11 +80,29 @@ async function loadTrending() {
 
   top.forEach(product => {
     trendingContainer.innerHTML += `
-      <div class="bg-white p-4 rounded shadow">
-        <img src="${product.image}" class="h-40 mx-auto object-contain">
-        <h3 class="font-semibold truncate">${product.title}</h3>
-        <p class="font-bold">$${product.price}</p>
-      </div>
+      <div class="rounded shadow">
+          <div class="bg-gray-100">
+          <img src="${product.image}" class="py-4 h-40 mx-auto object-contain">
+          </div>
+          <div class="p-5">
+          <div class="flex justify-between mt-5">
+            <span class="text-xs bg-indigo-100 text-indigo-600 px-2 py-1 rounded">
+            ${product.category}
+            </span>
+            <p>${getStars(product.rating.rate)} (${product.rating.count})</p>
+          </div>
+          <h3 class="font-semibold mt-2 truncate">${product.title}</h3>
+          <p class="font-bold">$${product.price}</p>
+          <div class="flex gap-2 mt-3">
+            <button onclick="showDetails(${product.id})"
+              class="border px-3 py-1 rounded w-full">Details</button>
+            <button onclick="addToCart()"
+              class="bg-indigo-600 text-white px-3 py-1 rounded w-full">
+              Add
+            </button>
+          </div>
+          </div>
+        </div>
     `;
   });
 }
