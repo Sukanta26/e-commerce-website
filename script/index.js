@@ -8,11 +8,12 @@ let cartCount = 0;
 
 // ⭐ Rating Stars
 function getStars(rate) {
-  let stars = "";
-  for (let i = 1; i <= 5; i++) {
-    stars += i <= Math.round(rate) ? "⭐" : "☆";
-  }
-  return stars;
+  // let stars = "";
+  // for (let i = 1; i <= 5; i++) {
+  //   stars += i <= Math.round(rate) ? "⭐" : "☆";
+  // }
+  // return stars;
+  return `<span class="inline-flex items-center leading-none gap-0.5">⭐ ${rate}</span>`
 }
 
 // 🛍️ Load All Products
@@ -24,23 +25,35 @@ async function loadProducts(url = API_URL) {
     productsContainer.innerHTML = "";
     data.forEach(product => {
       productsContainer.innerHTML += `
-        <div class="bg-white p-4 rounded shadow">
-          <img src="${product.image}" class="h-40 mx-auto object-contain">
-          <span class="text-xs bg-indigo-100 text-indigo-600 px-2 py-1 rounded">
+        <div class="rounded shadow-lg max-w-full overflow-hidden ">
+
+          <div class="bg-gray-200 p-4 rounded-t-lg">
+          <img src="${product.image}" class="lg:py-4 max-w-full lg:h-40 lg:mx-auto object-contain">
+          </div>
+
+          <div class="p-4">
+          <div class="flex justify-between">
+            <span class="text-xs font-semibold bg-indigo-100 text-indigo-600 px-2 py-0.5 rounded-full">
             ${product.category}
-          </span>
-          <h3 class="font-semibold mt-2 truncate">${product.title}</h3>
-          <p class="font-bold">$${product.price}</p>
-          <p>${getStars(product.rating.rate)} (${product.rating.count})</p>
-          <div class="flex gap-2 mt-3">
+            </span>
+            <p>${getStars(product.rating.rate)} (${product.rating.count})</p>
+          </div>
+
+          <div class="py-5">
+          <h3 class="font-medium text-xl truncate">${product.title}</h3>
+          <p class="font-bold text-xl">$${product.price}</p>
+          </div>
+
+          <div class="flex justify-between gap-5 mb-5">
             <button onclick="showDetails(${product.id})"
-              class="border px-3 py-1 rounded w-full">Details</button>
+              class="border py-1  rounded w-full ">Details</button>
             <button onclick="addToCart()"
-              class="bg-indigo-600 text-white px-3 py-1 rounded w-full">
+              class="bg-indigo-600 text-white py-1 rounded-lg w-full">
               Add
             </button>
           </div>
-        </div>
+          </div>
+      </div>
       `;
     });
   }
@@ -80,29 +93,35 @@ async function loadTrending() {
 
   top.forEach(product => {
     trendingContainer.innerHTML += `
-      <div class="rounded shadow-lg">
-          <div class="bg-gray-100 rounded-xl">
-          <img src="${product.image}" class="py-4 h-40 mx-auto object-contain">
+      <div class="rounded shadow-lg max-w-full overflow-hidden ">
+
+          <div class="bg-gray-200 p-4 rounded-t-lg">
+          <img src="${product.image}" class="lg:py-4 max-w-full lg:h-40 lg:mx-auto object-contain">
           </div>
-          <div class="p-5">
-          <div class="flex justify-between mt-5">
-            <span class="text-xs bg-indigo-100 text-indigo-600 px-2 py-1 rounded">
+
+          <div class="p-4">
+          <div class="flex justify-between">
+            <span class="text-xs font-semibold bg-indigo-100 text-indigo-600 px-2 py-0.5 rounded-full">
             ${product.category}
             </span>
             <p>${getStars(product.rating.rate)} (${product.rating.count})</p>
           </div>
-          <h3 class="font-semibold mt-2 truncate">${product.title}</h3>
-          <p class="font-bold">$${product.price}</p>
-          <div class="flex gap-2 mt-3">
+
+          <div class="py-5">
+          <h3 class="font-medium text-xl truncate">${product.title}</h3>
+          <p class="font-bold text-xl">$${product.price}</p>
+          </div>
+
+          <div class="flex justify-between gap-5 mb-5">
             <button onclick="showDetails(${product.id})"
-              class="border px-3 py-1 rounded w-full">Details</button>
+              class="border py-1  rounded w-full ">Details</button>
             <button onclick="addToCart()"
-              class="bg-indigo-600 text-white px-3 py-1 rounded w-full">
+              class="bg-indigo-600 text-white py-1 rounded-lg w-full">
               Add
             </button>
           </div>
           </div>
-        </div>
+      </div>
     `;
   });
 }
